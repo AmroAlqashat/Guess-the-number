@@ -94,5 +94,9 @@ button:hover{
     bottom: 400px;
 }
 
-
+@media(max-width: 600px){
+    *,body,button{
+        font-family: arial,cursive,sans-serif;
+    }
+}
 
