@@ -1,9 +1,11 @@
 #tryIt{
     margin-bottom: 20px;
 }
-#currentNum{
+.D-flex-justfy-center{
     display: flex;
     justify-content: center;
+}
+#currentNum{
     font-size: 1.1rem;
     margin-bottom: 25px;
 }
@@ -50,8 +52,6 @@ button:hover{
     padding: 12px 15px;
 }
 #board{
-    display: flex;
-    justify-content: center;
     gap: 13px;
     font-size: 1.2rem;
 }
@@ -71,6 +71,7 @@ button:hover{
 .imgInfo{
     height: 30px;
     cursor: pointer;
+    margin-top: 20px;
 }
 .imgInfo:hover{
     opacity: 0.8;
@@ -81,6 +82,16 @@ button:hover{
     text-align: left;
     font-size: 1.1rem;
     line-height: 1.7;
+}
+.win-div{
+    text-align: center;
+}
+.child-win-div{
+    width: 80vh;
+    height: 35vh;
+    background-color:rgb(34, 40, 49,0.95);
+    position: fixed;
+    bottom: 400px;
 }
 
 

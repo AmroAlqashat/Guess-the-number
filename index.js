@@ -13,16 +13,17 @@ function randomNumber(){
 }
 
 randomNumber();
-function generateTryIt(){
+function generateTryItBtn(){
     if (numberSquance.length === userSquance.length){
         const tryItCode = `<button id="check" onclick="check(); resetNumbers();">Try it</button>
-        <button class="cancelBsideTry" onclick="cancelBtnBesideTryFunction();">Cancel</button>`;
+        <button class="cancelBsideTry" onclick="cancelBtnFunction();">Cancel</button>`;
         $("#tryIt").html(tryItCode);
         $(".item").remove();
     }
 };
 
-function cancelBtnBesideTryFunction(){
+
+function cancelBtnFunction(){
     userSquance = [];
     $(".currentNumber").text(" ");
     $(".cancelBsideTry").remove();
@@ -30,7 +31,7 @@ function cancelBtnBesideTryFunction(){
     resetNumbers();
 };
 
-function cancelBtnFunction(){
+function cancelProgressBtn(){
     userSquance = [];
     $(".currentNumber").text(" ");
     $(".cancelBtn").remove();
@@ -42,7 +43,7 @@ function generateCurrentNum(){
     console.log("userSquance: " + userSquance)
     if (userSquance.length == 1){
         $(".currentNumber").text(`Current number: ${userSquance[0]}`);
-        const cancelBtn = `<button class="cancelBtn" onclick="cancelBtnFunction();">Cancel</button>`;
+        const cancelBtn = `<button class="cancelBtn" onclick="cancelProgressBtn();">Cancel</button>`;
         $(".currentNumber").after(cancelBtn);
     }
     if (userSquance.length == 2){
@@ -58,17 +59,17 @@ function generateCurrentNum(){
 };
 
 $(".item").click(function(){
-    // I add the + sgin to parse from string to int
     let userChosenNumber = +$(this).attr("id");
     userSquance.push(userChosenNumber);
     $(this).remove();
     generateCurrentNum();
-    generateTryIt();
+    generateTryItBtn();
 });
 
 function resetNumbers(){
     $(".item").remove();
-    let numbers = `        <button id="1" class="item">1</button>
+    let numbers = `        
+        <button id="1" class="item">1</button>
         <button id="2" class="item">2</button>
         <button id="3" class="item">3</button>
         <button id="4" class="item">4</button>
@@ -80,12 +81,12 @@ function resetNumbers(){
         <button id="0" class="item">0</button>`;
     $("#board").html(numbers);
     $(".item").click(function(){
-        // I add the + sgin to parse from string to int
+        // The + sgin to parse from string to int
         let userChosenNumber = +$(this).attr("id");
         userSquance.push(userChosenNumber);
         $(this).remove();
         generateCurrentNum();
-        generateTryIt();
+        generateTryItBtn();
     });
 }
 
@@ -100,7 +101,7 @@ $(".restart").click(function(){
     $("#generator > #table").remove();
     moves = 1;
     resetNumbers();
-})
+});
 
 $(".imgInfo").click(function(){
     if (toggle){
@@ -155,6 +156,32 @@ function check(){
     $("#generator").prepend(generateTable);
     moves++;
     userSquance = [];
+    if(samePositionCount === 4){
+        const html = `    
+            <div  class="child-win-div">
+                <h1 style="color: rgb(10, 188, 10);">You Won!</h1>
+                <p>You have successfully guessed the 4 numbers. Congratulations!</p>
+                <button class="restart" style="margin-top: 60px;">Start a new game</button>
+            </div>`;
+        $(".win-div").append(html);
+        let audio = new Audio('Sounds/win-sound.wav');
+        audio.play();
+        $(".normal-restart-btn").hide();
+        $(".restart").click(function(){
+            userSquance = [];
+            numberSquance = [];
+            randomNumber();
+            $(".currentNumber").text(" ");
+            $(".cancelBsideTry").remove();
+            $(".cancelBtn").remove();
+            $("#check").remove();
+            $("#generator > #table").remove();
+            $(".win-div > div").remove();
+            $(".normal-restart-btn").show();
+            moves = 1;
+            resetNumbers();
+        });
+    }
     $(".currentNumber").text(" ");
     $("#check").remove();
     $(".cancelBsideTry").remove();
