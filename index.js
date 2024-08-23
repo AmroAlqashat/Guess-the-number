@@ -39,8 +39,6 @@ function cancelProgressBtn(){
 };
 
 function generateCurrentNum(){
-    console.log("numberSquance: " + numberSquance)
-    console.log("userSquance: " + userSquance)
     if (userSquance.length == 1){
         $(".currentNumber").text(`Current number: ${userSquance[0]}`);
         const cancelBtn = `<button class="cancelBtn" onclick="cancelProgressBtn();">Cancel</button>`;
@@ -133,8 +131,6 @@ function check(){
             }
         }
     }
-    console.log("samePositionCount: " + samePositionCount);
-    console.log("differentPositionCount: " + differentPositionCount);
 
 
     let guessedNumber;
