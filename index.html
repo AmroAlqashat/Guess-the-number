@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="background-color: #222831; color: white; font-family: cursive;">
+
+
+    <h1 id="title" class="center-text">Guess The Number</h1>
+    <br> 
+    <p class="center-text">Available digits:</p>
+
+    <div id="board" class="center-text">
+        <button id="1" class="item">1</button>
+        <button id="2" class="item">2</button>
+        <button id="3" class="item">3</button>
+        <button id="4" class="item">4</button>
+        <button id="5" class="item">5</button>
+        <button id="6" class="item">6</button>
+        <button id="7" class="item">7</button>
+        <button id="8" class="item">8</button>
+        <button id="9" class="item">9</button>
+        <button id="0" class="item">0</button>
+    </div>
+
+    <div id="currentNum">
+            <p class="inline-block currentNumber" style="padding-right: 10px;"></p>
+    </div>
+
+
+    <div id="tryIt" class="center-text">
+        
+    </div>
+
+
+    <div id="generator" class="center-text"></div>
+
+    <div class="center-text newGame">
+        <button class="restart">Start a new game</button>
+    </div>
+
+    <div class="center-text">
+        <img src="./Images/info.png" alt="information" class="imgInfo">
+        <p id="info"></p>
+    </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+<script src="index.js"></script>
+</body>
+</html>
